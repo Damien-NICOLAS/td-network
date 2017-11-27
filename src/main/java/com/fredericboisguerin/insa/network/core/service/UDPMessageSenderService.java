@@ -15,7 +15,6 @@ public class UDPMessageSenderService implements MessageSenderService {
 
         data = message.getBytes();
 
-
         DatagramSocket datagramSocket = new DatagramSocket();
 
         DatagramPacket datagramPacket = new DatagramPacket(data, data.length);

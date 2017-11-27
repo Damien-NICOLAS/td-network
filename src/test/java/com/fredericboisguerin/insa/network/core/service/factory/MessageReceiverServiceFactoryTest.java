@@ -1,13 +1,12 @@
 package com.fredericboisguerin.insa.network.core.service.factory;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import com.fredericboisguerin.insa.network.core.service.MessageReceiverService;
 import com.fredericboisguerin.insa.network.core.service.TCPMessageReceiverService;
 import com.fredericboisguerin.insa.network.core.service.UDPMessageReceiverService;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MessageReceiverServiceFactoryTest {
 
@@ -24,6 +23,7 @@ public class MessageReceiverServiceFactoryTest {
 
         assertThat(messageReceiverService).isInstanceOf(TCPMessageReceiverService.class);
     }
+
 
     @Test
     public void should_build_message_receiver_UDP() throws Exception {
