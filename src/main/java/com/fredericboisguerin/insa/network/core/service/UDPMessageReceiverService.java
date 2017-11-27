@@ -38,6 +38,7 @@ public class UDPMessageReceiverService implements MessageReceiverService, Runnab
                 e.printStackTrace();
             }
         }
+        datagramSocket.close();
     }
 }
 
