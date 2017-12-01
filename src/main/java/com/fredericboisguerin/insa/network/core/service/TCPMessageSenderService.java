@@ -1,5 +1,7 @@
 package com.fredericboisguerin.insa.network.core.service;
 
+import com.fredericboisguerin.insa.network.core.ui.Message;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -13,11 +15,11 @@ public class TCPMessageSenderService implements MessageSenderService {
 
 
     @Override
-    public void sendMessageOn(String ipAddress, int port, String message) throws Exception {
+    public void sendMessageOn(String ipAddress, int port, Message message) throws Exception {
 
         chatSocket = new Socket(InetAddress.getByName(ipAddress), port);
         writer = new PrintWriter(chatSocket.getOutputStream());
-
+        System.out.println(message);
         writer.println(message);
 
 

@@ -34,8 +34,9 @@ public class SendUI implements CommunicationUI {
         int port = terminal.readInt();
         System.out.print("Message : ");
         String message = terminal.readLine();
+        Message message1 = new Message(Entete.ENVOIE_MESSAGE$, message);
         try {
-            messageSenderService.sendMessageOn(ipAddress, port, message);
+            messageSenderService.sendMessageOn(ipAddress, port, message1);
             terminal.print(String.format(NOTIFICATION_FORMAT, ipAddress, port));
         } catch (Exception exception) {
             terminal.printError(ERROR_MESSAGE);

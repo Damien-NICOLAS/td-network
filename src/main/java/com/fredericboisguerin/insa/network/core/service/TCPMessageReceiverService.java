@@ -1,12 +1,14 @@
 package com.fredericboisguerin.insa.network.core.service;
 
+import com.fredericboisguerin.insa.network.core.ui.Entete;
+import com.fredericboisguerin.insa.network.core.ui.Message;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import static java.lang.Thread.sleep;
 
 public class TCPMessageReceiverService implements MessageReceiverService, Runnable {
     private ServerSocket serverSocket;
@@ -33,11 +35,21 @@ public class TCPMessageReceiverService implements MessageReceiverService, Runnab
         boolean varTrue = true;
         while (varTrue){
             try{
-                String message = reader.readLine();
+                String messageRecue = reader.readLine();
+                if( messageRecue != null) {
+                    int char$ = messageRecue.indexOf('$');
 
-                if(message != null) {
-                    monIncomingMessageListener.onNewIncomingMessage(message);
+                    String[] tableauDeString = messageRecue.split("[$]", 2);
+                    System.out.println(tableauDeString[0]);
+                    monIncomingMessageListener.onNewIncomingMessage(tableauDeString[1]);
                 }
+
+
+
+
+
+
+
 
             }catch (IOException e){
                 e.printStackTrace();
